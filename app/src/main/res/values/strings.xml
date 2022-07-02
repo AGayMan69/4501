@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Tic Tac Toe Retro</string>
+    <string name="game_ranking">RANKING</string>
+    <string name="close">CLOSE</string>
+    <string name="your_records">RECORDS</string>
+    <string name="play">Play</string>
+    <string name="you_win">You Win!!</string>
+    <string name="win_continue">Continue</string>
+    <string name="dlalog_lose_tv">You Lose!!</string>
+    <string name="play_text_player">YOU</string>
+    <string name="play_text_cpu">CPU</string>
+    <string name="draw_game">Draw Game</string>
+    <string name="ready">READY</string>
+    <string name="fight">FIGHT</string>
+</resources>

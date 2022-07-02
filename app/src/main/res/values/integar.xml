@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="vibrate">1000</integer>
+    <integer name="vibrateDelay">100</integer>
+    <integer name="tic_button_change_delay">500</integer>
+</resources>

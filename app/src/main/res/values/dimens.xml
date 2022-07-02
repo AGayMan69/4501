@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tictactoe_size">120dp</dimen>
+    <dimen name="tictactoe_size_5">72dp</dimen>
+    <dimen name="board_gap">10dp</dimen>
+    <dimen name="board_gap_5">5dp</dimen>
+    <dimen name="choose_card_size">50dp</dimen>
+    <dimen name="choose_image_size">200dp</dimen>
+    <dimen name="choose_corner">40dp</dimen>
+    <dimen name="choose_elevation">10dp</dimen>
+    <dimen name="reset_elevation">1dp</dimen>
+    <dimen name="continue_btn_margin">10dp</dimen>
+    <dimen name="dialog_title_size">30sp</dimen>
+    <dimen name="dialog_elevation">10dp</dimen>
+    <dimen name="play_card_size">180dp</dimen>
+    <dimen name="play_card_corner_radius">20dp</dimen>
+    <dimen name="play_card_margin">17dp</dimen>
+    <dimen name="tv_card_font_size">30sp</dimen>
+    <dimen name="cards_mb">30dp</dimen>
+    <dimen name="play_card_tv_mb">20dp</dimen>
+    <dimen name="glow_adjustment">13dp</dimen>
+    <dimen name="title_font_sz">38dp</dimen>
+    <dimen name="title_mt">50dp</dimen>
+</resources>

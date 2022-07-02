@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:paddingHorizontal="10dp"
+        android:paddingTop="20dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.212"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_img" />
+
+    <Button
+        android:id="@+id/btn_Play"
+        style="@style/main_menu_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:text="@string/play"
+        android:textColor="#FB129E"
+        android:fontFamily="@font/airstrikeacad"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appLogo" />
+
+    <Button
+        android:id="@+id/btn_Records"
+        style="@style/main_menu_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/your_records"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintTop_toBottomOf="@id/btn_Ranking"
+        app:layout_constraintEnd_toEndOf="@+id/btn_Play"
+        app:layout_constraintStart_toStartOf="@+id/btn_Play"
+        />
+
+    <Button
+        android:id="@+id/btn_Close"
+        style="@style/main_menu_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/close"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintEnd_toEndOf="@+id/btn_Play"
+        app:layout_constraintStart_toStartOf="@+id/btn_Play"
+        app:layout_constraintTop_toBottomOf="@id/btn_Records" />
+
+    <Button
+        android:id="@+id/btn_Ranking"
+        style="@style/main_menu_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/game_ranking"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintEnd_toEndOf="@+id/btn_Play"
+        app:layout_constraintStart_toStartOf="@+id/btn_Play"
+        app:layout_constraintTop_toBottomOf="@id/btn_Play" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/main_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/animated_bg_1"
+        android:tint="@color/bg_transparent_filter"
+        android:translationZ="-1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+    <ImageButton
+        android:id="@+id/btn_music_volume"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/music_unmute"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="30dp"
+        />
+
+    <ImageButton
+        android:id="@+id/btn_sfx_volume"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/sfx_unmute"
+        android:scaleType="fitXY"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@id/btn_music_volume"
+        app:layout_constraintEnd_toStartOf="@id/btn_music_volume"
+        android:layout_marginHorizontal="20dp"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

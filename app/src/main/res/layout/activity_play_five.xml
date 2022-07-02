@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/play_act"
+    tools:context=".PlayActivity">
+
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/animated_bg_4"
+        android:tint="@color/bg_transparent_filter_hyper"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/ready_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#83000000"
+        android:elevation="1dp"
+        android:gravity="center"
+        >
+
+        <TextView
+            android:id="@+id/ready"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:text="@string/ready"
+            android:fontFamily="@font/airstrike"
+            android:textSize="80dp"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            />
+        <TextView
+            android:id="@+id/fight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:visibility="invisible"
+            android:text="@string/fight"
+            android:fontFamily="@font/single_fighter"
+            android:textSize="120dp"
+            android:textColor="@color/white"
+            />
+        <TextView
+            android:id="@+id/tv_rewind"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="REWIND"
+            android:visibility="invisible"
+            android:fontFamily="@font/airstrikeacad"
+            android:textSize="80dp"
+            android:textColor="@color/white"
+            />
+        <TextView
+            android:id="@+id/tv_rewindCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 rewind left"
+            android:textSize="20dp"
+            android:layout_marginTop="20dp"
+            android:visibility="invisible"
+            android:fontFamily="@font/game_played"
+            android:layout_alignStart="@id/tv_rewind"
+            android:layout_alignEnd="@id/tv_rewind"
+            android:textAlignment="center"
+            android:layout_below="@id/tv_rewind"
+            android:textColor="@color/white"
+            />
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gif_sam"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_below="@id/tv_rewindCount"
+            android:src="@drawable/rewind_gif"
+            android:visibility="gone"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"/>
+
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/btn_rewind"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:src="@drawable/rewind"
+        android:backgroundTint="@android:color/transparent"
+        android:padding="0dp"
+        android:scaleType="centerInside"
+        app:layout_constraintTop_toTopOf="@id/tv_time"
+        app:layout_constraintLeft_toLeftOf="@id/tableLayout"
+        android:layout_marginStart="@dimen/glow_adjustment"
+        />
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:text="00 : 00"
+        android:fontFamily="@font/game_played"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/tableLayout"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="@dimen/glow_adjustment"
+        />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintBottom_toTopOf="@id/tableLayout"
+        app:layout_constraintStart_toStartOf="@id/tableLayout"
+        app:layout_constraintEnd_toEndOf="@id/tableLayout"
+        android:layout_marginTop="10dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/cards_mb"
+        >
+        <androidx.cardview.widget.CardView
+            android:id="@+id/player_o"
+            app:layout_constraintTop_toBottomOf="@id/tv_card_o"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/card_gap"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/card_bg"
+            app:cardCornerRadius="@dimen/play_card_corner_radius"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            android:transitionName="ChosenO"
+            app:layout_constraintHorizontal_weight="5"
+            android:layout_marginTop="@dimen/play_card_margin"
+            android:layout_marginBottom="@dimen/glow_adjustment"
+            android:layout_marginStart="@dimen/glow_adjustment"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintVertical_chainStyle="spread_inside"
+                    android:src="@drawable/player_o_card" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+        <TextView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@id/player_o"
+            app:layout_constraintEnd_toEndOf="@id/player_o"
+            android:id="@+id/tv_card_o"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/play_text_player"
+            android:textAlignment="center"
+            android:textSize="@dimen/tv_card_font_size"
+            android:textColor="@color/tv_card_font_clr"
+            android:fontFamily="@font/arcade_classic"
+            />
+        <TextView
+            android:id="@+id/card_gap"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintTop_toTopOf="@id/player_o"
+            app:layout_constraintBottom_toBottomOf="@id/player_o"
+            app:layout_constraintStart_toEndOf="@id/player_o"
+            app:layout_constraintEnd_toStartOf="@id/player_x"/>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/player_x"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/card_gap"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/card_bg"
+            app:cardCornerRadius="@dimen/play_card_corner_radius"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            android:transitionName="ChosenX"
+            app:layout_constraintHorizontal_weight="5"
+            android:layout_marginBottom="@dimen/glow_adjustment"
+            android:layout_marginEnd="@dimen/glow_adjustment"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintVertical_chainStyle="spread_inside"
+                    android:src="@drawable/player_x_card" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+        <TextView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@id/player_x"
+            app:layout_constraintEnd_toEndOf="@id/player_x"
+            android:id="@+id/tv_card_x"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/play_text_player"
+            android:textAlignment="center"
+            android:textSize="@dimen/tv_card_font_size"
+            android:textColor="@color/tv_card_font_clr"
+            android:fontFamily="@font/arcade_classic"
+            android:layout_marginBottom="@dimen/play_card_tv_mb"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TableLayout
+        android:paddingHorizontal="@dimen/glow_adjustment"
+        android:id="@+id/tableLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/board_gap">
+
+            <ImageButton
+                android:id="@+id/board_btn_1"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:src="@drawable/player_o_card"
+                android:layout_marginEnd="@dimen/board_gap_5"
+                android:background="@drawable/tic_button_effect"
+                android:scaleType="fitCenter" />
+
+            <ImageButton
+                android:id="@+id/board_btn_2"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:src="@drawable/player_o_card"
+                android:layout_marginEnd="@dimen/board_gap_5"
+                android:background="@drawable/tic_button_effect"
+                android:scaleType="fitCenter" />
+
+            <ImageButton
+                android:id="@+id/board_btn_3"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:layout_marginEnd="@dimen/board_gap_5"
+                android:src="@drawable/player_o_card"
+                android:background="@drawable/tic_button_effect"
+                android:scaleType="fitCenter" />
+            <ImageButton
+                android:id="@+id/board_btn_4"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:layout_marginEnd="@dimen/board_gap_5"
+                android:background="@drawable/tic_button_effect"
+                android:scaleType="fitCenter" />
+            <ImageButton
+                android:id="@+id/board_btn_5"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:background="@drawable/tic_button_effect"
+                android:scaleType="fitCenter" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/board_gap">
+
+            <ImageButton
+                android:id="@+id/board_btn_6"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:src="@drawable/player_o_card"
+                android:layout_marginEnd="@dimen/board_gap_5"
+                android:background="@drawable/tic_button_effect"
+                android:scaleType="fitCenter" />
+
+            <ImageButton
+                android:id="@+id/board_btn_7"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:src="@drawable/player_o_card"
+                android:layout_marginEnd="@dimen/board_gap_5"
+                android:background="@drawable/tic_button_effect"
+                android:scaleType="fitCenter" />
+
+            <ImageButton
+                android:id="@+id/board_btn_8"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:layout_marginEnd="@dimen/board_gap_5"
+                android:src="@drawable/player_o_card"
+                android:background="@drawable/tic_button_effect"
+                android:scaleType="fitCenter" />
+            <ImageButton
+                android:id="@+id/board_btn_9"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:layout_marginEnd="@dimen/board_gap_5"
+                android:background="@drawable/tic_button_effect"
+                android:scaleType="fitCenter" />
+            <ImageButton
+                android:id="@+id/board_btn_10"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:background="@drawable/tic_button_effect"
+                android:scaleType="fitCenter" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/board_gap">
+
+            <ImageButton
+                android:id="@+id/board_btn_11"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:src="@drawable/player_x_card"
+                android:layout_marginEnd="@dimen/board_gap_5"
+                android:background="@drawable/tic_button_effect_x"
+                android:scaleType="fitCenter" />
+
+            <ImageButton
+                android:id="@+id/board_btn_12"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:src="@drawable/player_x_card"
+                android:layout_marginEnd="@dimen/board_gap_5"
+                android:background="@drawable/tic_button_effect_x"
+                android:scaleType="fitCenter" />
+
+            <ImageButton
+                android:id="@+id/board_btn_13"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:layout_marginEnd="@dimen/board_gap_5"
+                android:src="@drawable/player_x_card"
+                android:background="@drawable/tic_button_effect_x"
+                android:scaleType="fitCenter" />
+            <ImageButton
+                android:id="@+id/board_btn_14"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:layout_marginEnd="@dimen/board_gap_5"
+                android:src="@drawable/player_x_card"
+                android:background="@drawable/tic_button_effect_x"
+                android:scaleType="fitCenter" />
+            <ImageButton
+                android:id="@+id/board_btn_15"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:src="@drawable/player_x_card"
+                android:background="@drawable/tic_button_effect_x"
+                android:scaleType="fitCenter" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/board_gap">
+
+            <ImageButton
+                android:id="@+id/board_btn_16"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:src="@drawable/player_o_card"
+                android:layout_marginEnd="@dimen/board_gap_5"
+                android:background="@drawable/tic_button_effect"
+                android:scaleType="fitCenter" />
+
+            <ImageButton
+                android:id="@+id/board_btn_17"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:src="@drawable/player_o_card"
+                android:layout_marginEnd="@dimen/board_gap_5"
+                android:background="@drawable/tic_button_effect"
+                android:scaleType="fitCenter" />
+
+            <ImageButton
+                android:id="@+id/board_btn_18"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:layout_marginEnd="@dimen/board_gap_5"
+                android:src="@drawable/player_o_card"
+                android:background="@drawable/tic_button_effect"
+                android:scaleType="fitCenter" />
+            <ImageButton
+                android:id="@+id/board_btn_19"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:layout_marginEnd="@dimen/board_gap_5"
+                android:background="@drawable/tic_button_effect"
+                android:scaleType="fitCenter" />
+            <ImageButton
+                android:id="@+id/board_btn_20"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:background="@drawable/tic_button_effect"
+                android:scaleType="fitCenter" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/board_gap">
+
+            <ImageButton
+                android:id="@+id/board_btn_21"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:src="@drawable/player_o_card"
+                android:layout_marginEnd="@dimen/board_gap_5"
+                android:background="@drawable/tic_button_effect"
+                android:scaleType="fitCenter" />
+
+            <ImageButton
+                android:id="@+id/board_btn_22"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:src="@drawable/player_o_card"
+                android:layout_marginEnd="@dimen/board_gap_5"
+                android:background="@drawable/tic_button_effect"
+                android:scaleType="fitCenter" />
+
+            <ImageButton
+                android:id="@+id/board_btn_23"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:layout_marginEnd="@dimen/board_gap_5"
+                android:src="@drawable/player_o_card"
+                android:background="@drawable/tic_button_effect"
+                android:scaleType="fitCenter" />
+            <ImageButton
+                android:id="@+id/board_btn_24"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:layout_marginEnd="@dimen/board_gap_5"
+                android:background="@drawable/tic_button_effect"
+                android:scaleType="fitCenter" />
+            <ImageButton
+                android:id="@+id/board_btn_25"
+                android:layout_width="@dimen/tictactoe_size_5"
+                android:layout_height="@dimen/tictactoe_size_5"
+                android:layout_column="1"
+                android:background="@drawable/tic_button_effect"
+                android:scaleType="fitCenter" />
+
+        </TableRow>
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

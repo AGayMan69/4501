@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+
+    android:background="@color/record_row_bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <TextView
+            android:id="@+id/tv_player_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:fontFamily="@font/pixelmix"
+            android:text="Name"
+            android:textColor="@color/record_txt_clr"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/tv_player_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_player_head"
+            android:layout_alignStart="@+id/tv_player_head"
+            android:layout_marginTop="10dp"
+            android:textSize="13dp"
+            android:textColor="#a6e3a1"
+            android:fontFamily="@font/pixelmix"
+            android:text="Kenny Lam" />
+        <TextView
+            android:id="@+id/tv_duration"
+            android:fontFamily="@font/pixelmix_bold"
+            android:textSize="10dp"
+            android:textColor="@color/record_duration_clr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_player_name"
+            android:layout_alignEnd="@id/tv_duration_head"
+            android:text="9sec"
+            />
+        <TextView
+            android:id="@+id/tv_duration_head"
+            android:fontFamily="@font/pixelmix"
+            android:textColor="@color/record_status_clr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@id/tv_player_head"
+            android:text="Duration"
+            android:textSize="12dp"
+           />
+
+</RelativeLayout>

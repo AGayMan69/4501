@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="card_bg">#020F1D</color>
+    <color name="glow_clr">#58FFD8</color>
+    <color name="glow_clr_red">#FF589B</color>
+    <color name="transparent_black">#DF0E0E0E</color>
+    <color name="tv_card_font_clr">#ffffffff</color>
+    <color name="bg_transparent_filter">#87000000</color>
+    <color name="bg_transparent_filter_hyper">#41FF11A0</color>
+    <color name="record_row_bg">#1e1e2e</color>
+    <color name="record_txt_clr">#8caaee</color>
+    <color name="record_status_clr">#e5c890</color>
+    <color name="record_duration_clr">#ca9ee6</color>
+</resources>

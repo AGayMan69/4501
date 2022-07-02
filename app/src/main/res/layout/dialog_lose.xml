@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center">
+    <androidx.cardview.widget.CardView
+        android:layout_width="400dp"
+        android:layout_height="450dp"
+        app:cardCornerRadius="30dp"
+        app:cardBackgroundColor="@color/card_bg"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/dialog_win_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dlalog_lose_tv"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dialog_title_size"
+                android:layout_above="@id/lottie_loser"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/pixelmix_bold"
+                />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_loser"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            android:scaleType="fitCenter"
+            app:lottie_rawRes="@raw/angry"
+            android:layout_centerInParent="true"
+            />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                android:scaleType="centerCrop"
+                app:lottie_rawRes="@raw/fire" />
+        <Button
+            android:id="@+id/btn_win_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/win_continue"
+            android:backgroundTint="#FF0F7F"
+            android:fontFamily="@font/pixelmix"
+            android:layout_below="@id/lottie_loser"
+            android:layout_marginTop="@dimen/continue_btn_margin"
+            android:layout_centerHorizontal="true"
+            />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

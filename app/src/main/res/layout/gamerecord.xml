@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+
+    android:background="@color/record_row_bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <TextView
+            android:id="@+id/tv_player_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:fontFamily="@font/pixelmix"
+            android:textColor="@color/record_txt_clr"
+            android:textSize="12dp"
+            android:text="30-06-2022" />
+
+        <TextView
+            android:id="@+id/tv_player_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_player_head"
+            android:layout_alignStart="@+id/tv_player_head"
+            android:layout_marginTop="10dp"
+            android:textSize="10dp"
+            android:textColor="@color/record_txt_clr"
+            android:fontFamily="@font/pixelmix"
+            android:text="9:6 AM" />
+        <TextView
+            android:id="@+id/tv_duration"
+            android:fontFamily="@font/pixelmix_bold"
+            android:textSize="10dp"
+            android:textColor="@color/record_duration_clr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:text="9sec"
+            />
+        <TextView
+            android:id="@+id/tv_status"
+            android:fontFamily="@font/game_played"
+            android:textColor="@color/record_status_clr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/tv_duration"
+            android:layout_alignBottom="@id/tv_player_name"
+            android:text="DRAW"
+           />
+
+</RelativeLayout>

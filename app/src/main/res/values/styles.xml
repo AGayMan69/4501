@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="main_menu_item">
+        <item name="android:fontFamily">@font/airstrikehalf</item>
+        <item name="android:textSize">27dp</item>
+        <item name="android:textColor">@color/main_menu_color</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+    <style name="GameDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/fade_in_slide_in</item>
+        <item name="android:windowExitAnimation">@android:anim/slide_out_right</item>
+    </style>
+    <style name="Theme.Assignment.Play">
+       <item name="android:windowSharedElementEnterTransition">@transition/shared_card</item>
+    </style>
+</resources>
