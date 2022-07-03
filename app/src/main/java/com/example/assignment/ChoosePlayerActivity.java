@@ -53,6 +53,7 @@ public class ChoosePlayerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_player);
+//        initialize views
         TextView hintText = findViewById(R.id.tv_select);
         confirmBtn = findViewById(R.id.btn_confirm);
         hyperBtn = findViewById(R.id.btn_hyper);
@@ -62,17 +63,23 @@ public class ChoosePlayerActivity extends AppCompatActivity {
         confirmBtn.setVisibility(View.INVISIBLE);
         hyperBtn.setVisibility(View.INVISIBLE);
 
+        // load sound effect
         loadSound();
+        // initialize select player flashing animation
         Animation animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.flashing);
         hintText.startAnimation(animation);
+        // start normal game mode if the confirm button is clicked
         confirmBtn.setOnClickListener(v -> {
             startGame(3);
             confirmBtn.startAnimation(confirmAni);
         });
+        // start hyper game mode if the hyper button is clicked
         hyperBtn.setOnClickListener(v -> {
             startGame(5);
             hyperBtn.startAnimation(confirmAni);
         });
+
+        // set click listener on both "X" or "O" card
         cardO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,15 +92,15 @@ public class ChoosePlayerActivity extends AppCompatActivity {
                 selectPlayer(cardX);
             }
         });
+//        initialize animations
         getAnimation();
+        // play select player sound effect
         MediaPlayer player = MediaPlayer.create(this, R.raw.choose_announce);
         if (!MainActivity.SFXMute)
             player.start();
-//        gameLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-//            BackgroundMusicService.changeMusic(R.raw.main_background_music, getApplicationContext());
-//        });
     }
 
+//    load sound effect related to the choose player activity to the sound pool
     private void loadSound() {
         AudioAttributes audioAttributes = new AudioAttributes.Builder().build();
         soundPool = new SoundPool.Builder()
@@ -108,7 +115,9 @@ public class ChoosePlayerActivity extends AppCompatActivity {
         soundPool.play(anounceSFX, MainActivity.soundEffectVolume, MainActivity.soundEffectVolume, 0, 0, 1);
     }
 
+    // initialize the animation related the player select and hyper/confirm button
     private void getAnimation() {
+        // player select animation
         checkAni = new ScaleAnimation(
                 1f, 1.1f,
                 1f, 1.1f,
@@ -139,6 +148,7 @@ public class ChoosePlayerActivity extends AppCompatActivity {
     }
 
     private void startGame(int size) {
+        // prevent spam click on the confirm and hyper button
         if ((SystemClock.elapsedRealtime() - lastPlayClickTime) < 3000) {
             return;
         }
@@ -156,16 +166,19 @@ public class ChoosePlayerActivity extends AppCompatActivity {
                 gameIntent.putExtra("player", player);
                 ActivityOptionsCompat options;
                 if (player == 1) {
+                    // start share element animation
                     options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                             ChoosePlayerActivity.this, cardO, ViewCompat.getTransitionName(cardO)
                     );
                 } else {
+                    // start share element animation
                     options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                             ChoosePlayerActivity.this, cardX, ViewCompat.getTransitionName(cardX)
                     );
                 }
                 confirmBtn.setClickable(true);
                 hyperBtn.setClickable(true);
+                // start play tic tac toe activity
                 startActivityForResult(gameIntent, 666, options.toBundle());
             }
 
@@ -174,6 +187,7 @@ public class ChoosePlayerActivity extends AppCompatActivity {
 
             }
         });
+//        play start game sound effect
         if (size == 3) {
             soundPool.play(confirmSFX, MainActivity.soundEffectVolume, MainActivity.soundEffectVolume, 0, 0, 1);
         } else {
@@ -182,7 +196,9 @@ public class ChoosePlayerActivity extends AppCompatActivity {
 
     }
 
+    // method the select player according to user click
     private void selectPlayer(CardView card) {
+        // start select animation
         if (!selected) {
             selected = true;
             confirmBtn.setVisibility(View.VISIBLE);
@@ -223,12 +239,14 @@ public class ChoosePlayerActivity extends AppCompatActivity {
         card.setOutlineSpotShadowColor(getColor(R.color.black));
     }
 
+    // return from play tic tac toe activity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Log.d(TAG, "onActivityResult: returned");
         confirmBtn.setEnabled(true);
         hyperBtn.setEnabled(true);
+        // change bgm to main
         BackgroundMusicService.changeMusic(R.raw.main_background_music, getBaseContext());
         soundPool.play(anounceSFX, MainActivity.soundEffectVolume, MainActivity.soundEffectVolume, 0, 0, 1);
     }

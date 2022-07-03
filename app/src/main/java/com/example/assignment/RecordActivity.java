@@ -20,6 +20,7 @@ public class RecordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_record);
         gameRecordListView = findViewById(R.id.lv_game_record);
         piechartBtn = findViewById(R.id.btn_show_pie_chart);
+        // open pie chart
         piechartBtn.setOnClickListener(v -> {
             Intent pieChartIntent = new Intent(getApplicationContext(), PieChartActivity.class);
             startActivity(pieChartIntent);
@@ -45,9 +46,11 @@ public class RecordActivity extends AppCompatActivity {
                     cursor.getInt(cursor.getColumnIndex("duration")),
                     cursor.getString(cursor.getColumnIndex("winningStatus"))
             );
+            // add records to individual
             GameRecord.records[counter++] = record;
         }
         PlayerRecordAdapter recordAdapter = new PlayerRecordAdapter(getApplicationContext(), GameRecord.records);
+        // set list view
         gameRecordListView.setAdapter(recordAdapter);
     }
 }

@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat;
 
 import java.util.Objects;
 
+// player record list view adapter
 public class PlayerRecordAdapter extends ArrayAdapter<GameRecord> {
 
     public PlayerRecordAdapter(Context applicationContext, GameRecord[] records) {
@@ -27,6 +28,7 @@ public class PlayerRecordAdapter extends ArrayAdapter<GameRecord> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.gamerecord, parent, false);
         }
+//        load the player record into the list view record
         TextView playTime = convertView.findViewById(R.id.tv_player_name);
         TextView playDate = convertView.findViewById(R.id.tv_player_head);
         TextView duration = convertView.findViewById(R.id.tv_duration);
@@ -38,6 +40,7 @@ public class PlayerRecordAdapter extends ArrayAdapter<GameRecord> {
         String result = gameRecord.getStatus();
         status.setText(result);
 
+        // change color accord to the game result
         if (Objects.equals(result, "WIN")) {
             status.setTextColor(Color.parseColor("#a6d189"));
         } else if (Objects.equals(result, "LOSE")) {

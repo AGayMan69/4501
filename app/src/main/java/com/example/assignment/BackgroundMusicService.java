@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 
+// a service that run media player for playing the background music
 public class BackgroundMusicService extends Service {
     private static final String TAG = "Music";
     private static int music = 0;
@@ -31,6 +32,7 @@ public class BackgroundMusicService extends Service {
     }
 
     public int onStartCommand(Intent intent, int flag, int startID){
+        // looping the bgm
         player.setLooping(true);
         changeVolume();
         player.start();
@@ -39,6 +41,7 @@ public class BackgroundMusicService extends Service {
         return Service.START_STICKY;
     }
 
+    // changing the music source for the media player
     public static void changeMusic(int music, Context context) {
         Log.d(TAG, "onCreate: changing music");
         BackgroundMusicService.music  = music;
@@ -49,14 +52,17 @@ public class BackgroundMusicService extends Service {
         player.start();
     }
 
+    // pausing the media player / music
     public static void pause() {
         player.pause();
     }
 
+    // resuming the media player / music
     public static void resume() {
         player.start();
     }
 
+    // destroy the media player
     @Override
     public void onDestroy() {
         player.stop();
@@ -68,6 +74,7 @@ public class BackgroundMusicService extends Service {
         super.onLowMemory();
     }
 
+    // return the which of music is playing currently
     public static String getMusic() {
        if (music == R.raw.main_background_music)
            return "main";
@@ -83,6 +90,7 @@ public class BackgroundMusicService extends Service {
        return mute;
     }
 
+    // mute if the muted option is selected on the main menu
     public static void changeVolume() {
         if (mute)
             player.setVolume(0, 0);

@@ -1,6 +1,6 @@
 package com.example.assignment;
 
-
+//class storing animation
 public class TransitionAnimation {
     public static int OPENENTERING = android.R.anim.fade_in;
     public static int OPENEXITING = android.R.anim.slide_out_right;

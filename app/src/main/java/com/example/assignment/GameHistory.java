@@ -4,6 +4,7 @@ import android.util.Log;
 
 import java.util.Stack;
 
+// care taker for storing game history
 public class GameHistory {
     private static final String TAG = "TTT Caretaker";
     private Stack<TicTacToe.TicTacToeMemento> gamehist = new Stack<>();

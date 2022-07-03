@@ -25,10 +25,10 @@
             android:layout_below="@+id/tv_player_head"
             android:layout_alignStart="@+id/tv_player_head"
             android:layout_marginTop="10dp"
-            android:textSize="10dp"
-            android:textColor="@color/record_txt_clr"
             android:fontFamily="@font/pixelmix"
-            android:text="9:6 AM" />
+            android:text="9:6 AM"
+            android:textColor="@color/record_txt_clr"
+            android:textSize="10dp" />
         <TextView
             android:id="@+id/tv_duration"
             android:fontFamily="@font/pixelmix_bold"

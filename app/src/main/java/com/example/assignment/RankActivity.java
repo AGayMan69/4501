@@ -40,13 +40,16 @@ public class RankActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        // start the rank download async task
         task.execute(DATAURL);
     }
 
+    // rank download async task
     private class RankDownloadTask extends AsyncTask<String, Integer, String> {
         @Override
         protected String doInBackground(String... values) {
             {
+
                 StringBuilder result = new StringBuilder();
                 try {
                     URL url = new URL(values[0]);
@@ -63,6 +66,7 @@ public class RankActivity extends AppCompatActivity {
                         result.append(line);
                     }
                     inputStream.close();
+                    con.disconnect();
                     return result.toString();
                 } catch (IOException e) {
                     Log.d(TAG, String.format("loadRanking: %s", e.getMessage()) );
@@ -74,6 +78,8 @@ public class RankActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+            if (s == null)
+                return;
             try {
                 JSONArray playerArr = new JSONArray(s);
                 playerList = new ArrayList<>();
@@ -81,6 +87,7 @@ public class RankActivity extends AppCompatActivity {
                    playerList.add(playerArr.getJSONObject(i));
                 }
 
+                // sort(Merge) the player list array (ascending duration)
                 Collections.sort(playerList, new Comparator<JSONObject>() {
                     @Override
                     public int compare(JSONObject o1, JSONObject o2) {
@@ -100,27 +107,6 @@ public class RankActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }
-    }
-    private void loadRanking() {
-        StringBuilder result = new StringBuilder();
-        try {
-            URL url = new URL(DATAURL);
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-
-            con.setRequestMethod("GET");
-            con.connect();
-
-            InputStream inputStream = con.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-
-            String line = "";
-            while ((line = bufferedReader.readLine()) != null) {
-                result.append(line);
-            }
-            inputStream.close();
-        } catch (IOException e) {
-            Log.d(TAG, String.format("loadRanking: %s", e.getMessage()) );
         }
     }
 

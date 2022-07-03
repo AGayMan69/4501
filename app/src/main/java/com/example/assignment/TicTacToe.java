@@ -16,6 +16,7 @@ public class TicTacToe {
     private int moveCount;
     private Move[] lastMove;
 
+    // enum represent win type
     public enum WinType {
         NOT_DECIDE,
         ROW_WIN,
@@ -23,6 +24,8 @@ public class TicTacToe {
         DIAGN_WIN,
         DIAGP_WIN
     }
+
+    // class for storing game result
     public class GameResult {
         private int winner;
         private WinType type;
@@ -80,6 +83,7 @@ public class TicTacToe {
     }
 
     public GameResult addMove(int player, int row, int col) throws IllegalArgumentException {
+//        check invalid move
         if (!(player == -1 || player == 1)) {
             throw new IllegalArgumentException("Invalid Player");
         }
@@ -122,6 +126,7 @@ public class TicTacToe {
         {
             result = new GameResult(player, WinType.DIAGN_WIN);
         }
+        // draw
         else if (turn == size * size)
         {
            result = new GameResult(2);
@@ -136,6 +141,7 @@ public class TicTacToe {
         return result;
     }
 
+    // deep clone
     public int[][] getBoard() {
         int[][] cloneBoard = new int[board.length][];
         for (int i = 0; i < board.length; i++) {
@@ -176,6 +182,7 @@ public class TicTacToe {
         return size;
     }
 
+    // restoring the state of the game
     public TicTacToeMemento saveGame(){
         return new TicTacToeMemento(
                getBoard(),
@@ -189,6 +196,7 @@ public class TicTacToe {
         );
     }
 
+    // restore the data from memento
     public void restoreGame(TicTacToeMemento memento){
         board = memento.getBoard();
         rowScore = memento.getRowScore();
@@ -200,6 +208,7 @@ public class TicTacToe {
         lastMove = memento.getLastMove();
     }
 
+    // memento class storing the game state
     static class TicTacToeMemento {
         int[][] board;
         int[] rowScore;
@@ -253,6 +262,7 @@ public class TicTacToe {
             return lastMove;
         }
     }
+
     public class Move {
         private int player;
         private int col;

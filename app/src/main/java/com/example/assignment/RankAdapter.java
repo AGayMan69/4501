@@ -18,6 +18,7 @@ import org.json.JSONObject;
 import java.util.List;
 import java.util.Objects;
 
+// list view adapter to generate view
 public class RankAdapter extends ArrayAdapter<JSONObject> {
 
     public RankAdapter(Context applicationContext, List<JSONObject> records) {

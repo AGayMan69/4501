@@ -1,5 +1,6 @@
 package com.example.assignment;
 
+// class for store game record
 public class GameRecord {
     private int id;
     private String date;

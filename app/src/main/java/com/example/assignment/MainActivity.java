@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        Enum map for storing the 4 menu button
         buttonMap = new EnumMap(buttonType.class);
 
         Button playButton = findViewById(R.id.btn_Play);
@@ -49,21 +50,27 @@ public class MainActivity extends AppCompatActivity {
         buttonMap.put(buttonType.CLOSE, closeButton);
         Animation playVibrate = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.icon_vibrate);
         playButton.startAnimation(playVibrate);
+//        adding shadow to the menu buttons stored in the map
         for (Button btn: buttonMap.values()) {
             btn.setShadowLayer(4, 4, 4, Color.BLACK);
         }
+//        start choose player activity when play button is clicked
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 playTicToe();
             }
         });
+
+        // show ranking activity the ranking button is clicked
         rankButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showRanking();
             }
         });
+
+        // show player record activity when the record is clicked
         recordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,15 +78,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         closeButton.setOnClickListener(v -> {
+            // creating a dialog to prompt the user whether to close the application or not
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("Are you sure??")
                     .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
+                            // close the application
                            finish();
                            System.exit(0);
                         }
                     })
                     .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        // close the dialog
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.dismiss();
                         }
@@ -91,10 +101,12 @@ public class MainActivity extends AppCompatActivity {
         musicVolumeBtn = findViewById(R.id.btn_music_volume);
         sfxVolumeBtn = findViewById(R.id.btn_sfx_volume);
 
+        // toggle the music (muted/ not muted)
         musicVolumeBtn.setOnClickListener(v -> {
             toggleMusic();
         });
 
+        // toggle the sound effect (muted/ not muted)
         sfxVolumeBtn.setOnClickListener(v -> {
             toggleSFX();
             changeSFXVolume();
@@ -104,12 +116,14 @@ public class MainActivity extends AppCompatActivity {
         loadSound();
     }
 
+    // toggle the background service volume
     private void toggleMusic() {
        BackgroundMusicService.muteMusic(!BackgroundMusicService.isMute());
        BackgroundMusicService.changeVolume();
        changeMusicIcon();
     }
 
+    //        change the music icon to represent whether the music is muted or not
     private void changeMusicIcon() {
         if (BackgroundMusicService.isMute()) {
             musicVolumeBtn.setImageResource(R.drawable.music_mute);
@@ -131,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // setting the sound effect volume for the sound pool
     private void changeSFXVolume() {
        if (SFXMute) {
            soundEffectVolume = 0;
@@ -139,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
        }
     }
 
+    // loading the main menu button sound effect into the sound pool
     private void loadSound() {
         AudioAttributes audioAttributes = new AudioAttributes.Builder().build();
         soundPool = new SoundPool.Builder()
@@ -153,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
         Intent playerIntent = new Intent(this, ChoosePlayerActivity.class);
         soundPool.play(menu_playSFX, soundEffectVolume, soundEffectVolume, 0,0, 1);
         startActivity(playerIntent);
+        // enable fade in transition animation
         overridePendingTransition(TransitionAnimation.OPENENTERING, TransitionAnimation.OPENEXITING);
     }
 
@@ -160,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
         Intent rankIntent = new Intent(this, RankActivity.class);
         soundPool.play(menu_chooseSFX, soundEffectVolume, soundEffectVolume, 0,0, 1);
         startActivity(rankIntent);
+        // enable fade in transition animation
         overridePendingTransition(TransitionAnimation.OPENENTERING, TransitionAnimation.OPENEXITING);
     }
 
@@ -167,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
         Intent recordIntent = new Intent(this, RecordActivity.class);
         soundPool.play(menu_chooseSFX, MainActivity.soundEffectVolume, MainActivity.soundEffectVolume, 0,0, 1);
         startActivity(recordIntent);
+        // enable fade in transition animation
         overridePendingTransition(TransitionAnimation.OPENENTERING, TransitionAnimation.OPENEXITING);
     }
 

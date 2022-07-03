@@ -17,6 +17,7 @@ import android.view.Window;
 public class PieChartActivity extends AppCompatActivity {
 
     private Panel piechart;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +47,7 @@ public class PieChartActivity extends AppCompatActivity {
             SQLiteDatabase db = SQLiteDatabase.openDatabase("/data/data/com.example.assignment/tictactoeDB"
                     , null
             ,SQLiteDatabase.OPEN_READONLY);
+//            calculate degree of piechart
             winCount = (int) DatabaseUtils.queryNumEntries(db, "GamesLog", "winningStatus=?", new String[] {"WIN"});
             loseCount = (int) DatabaseUtils.queryNumEntries(db, "GamesLog", "winningStatus=?", new String[] {"LOSE"});
             drawCount = (int) DatabaseUtils.queryNumEntries(db, "GamesLog", "winningStatus=?", new String[] {"DRAW"});
@@ -53,11 +55,13 @@ public class PieChartActivity extends AppCompatActivity {
             float winDegree = (winCount / (float) totalGame) * 360;
             float loseDegree = (loseCount / (float) totalGame) * 360;
             float drawDegree = (drawCount/ (float) totalGame) * 360;
+            // centering the pie chart
             int rectX = (getWidth() - getHeight() / 2)/2;
             int rectY = getHeight() / 4;
             int lblRectX = getWidth() - 250;
             int lblRectY = getHeight() - 250;
             int lblRectSize = 50;
+
             RectF rec = new RectF(
                     rectX,
                     rectY,
