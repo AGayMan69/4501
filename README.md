@@ -7,10 +7,10 @@ Don't forget to give this project a star for additional support ;)
 Maybe you can mention me or this repo in the acknowledgements too
 -->
 <div align="center">
-  <h1>Tic Tac Toe</h1>
+  <h1>:x: Tic Tac Toe :o:</h1>
   
   <p>
-    An awesome game to play with friends!
+    Neon themed tic tac toe made with Java
   </p>
   
 </div>
@@ -46,13 +46,13 @@ Get ready to enjoy the classic game of Tic Tac Toe with a modern twist! This And
 <!-- Features -->
 ### :dart: Features
 
-- **Side Selection**
+- **Side Selection**\
 ![](./readme/side_selection.gif)
-- **CPU opponent**
+- **CPU opponent**\
 ![](./readme/CPU.gif)
-- **Rewind (regret button)**
+- **Rewind (regret button)**\
 ![](./readme/rewind.gif)
-- **Hypermode (5x5)**
+- **Hypermode (5x5)**\
 ![](./readme/hyper.gif)
-- **Game record**
+- **Game record**\
 ![](./readme/records.gif)
